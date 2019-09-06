@@ -12,11 +12,11 @@ namespace KafkaConsumer
 
             var kafkaConfig = new ConsumerConfig()
             {
-                BootstrapServers = "127.0.0.1:9092",
+                BootstrapServers = "10.0.0.12:9092",
                 EnableAutoCommit = false,
                 SessionTimeoutMs = 20000,
                 AutoOffsetReset = AutoOffsetReset.Earliest,
-                GroupId = "ContentDomainEventConsumerGroupTest"
+                GroupId = "ContentConsumerTest"
             };
 
             var kafkaConsumer = new ConsumerBuilder<Ignore, string>(kafkaConfig)
@@ -37,7 +37,7 @@ namespace KafkaConsumer
                 while (true)
                 {
                     var message = kafkaConsumer.Consume();
-                    if (message.Offset < 22831)
+                    if (message.Offset < 24614)
                     {
                         continue;
                     }
